@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Traffic Analyzer Report</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --card: #161a23;
+      --muted: #9aa4b2;
+      --text: #e6e6e6;
+      --accent: #6ea8fe;
+      --good: #3ddc97;
+      --warn: #f2c94c;
+      --bad: #ff6b6b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at top right, #10131a 0%, var(--bg) 40%);
+      color: var(--text);
+      padding: 24px;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .title { font-size: 28px; margin: 0 0 10px; letter-spacing: 0.2px; }
+    .subtitle { color: var(--muted); margin-bottom: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .card { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); border: 1px solid #232739; border-radius: 16px; padding: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .card h3 { margin-top: 0; font-size: 16px; letter-spacing: 0.3px; }
+    .stat { font-size: 26px; font-weight: 700; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { padding: 8px 10px; border-bottom: 1px solid #212639; }
+    th { text-align: left; color: var(--muted); font-weight: 600; }
+    .tag { display: inline-block; padding: 6px 10px; margin: 4px 6px 0 0; background: #1e2435; border: 1px solid #273152; border-radius: 999px; font-size: 12px; color: #bcd1ff; }
+    .muted { color: var(--muted); }
+    .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #1e2435; border: 1px solid #273152; color: #cbd5e1; font-size: 12px; }
+    .footer { margin-top: 24px; color: var(--muted); font-size: 12px; text-align: center; }
+    .ai-disabled { color: var(--warn); font-weight: 600; }
+    .list { margin: 0; padding-left: 18px; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">AI Traffic Analyzer Report</h1>
+    <div class="subtitle">
+      <span class="pill">Mode: live</span>
+      <span class="pill">Interface: any</span>
+      <span class="pill">Filter: <span class="mono">tcp or udp or icmp</span></span>
+      
+      <span class="pill">Packets: 55</span>
+      <span class="pill">Bytes: 4274</span>
+      <div class="muted" style="margin-top:8px;">Start: 2025-08-09T09:00:09.899767Z • End: 2025-08-09T09:00:21.495074Z</div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Traffic Overview</h3>
+        <div class="stat">55</div>
+        <div class="muted">total packets</div>
+        <div style="height:8px;"></div>
+        <div class="stat">4274</div>
+        <div class="muted">total bytes</div>
+      </div>
+
+      <div class="card">
+        <h3>Protocol Breakdown</h3>
+        <table>
+          <thead><tr><th>Protocol</th><th>Count</th></tr></thead>
+          <tbody>
+            
+            <tr><td>TCP</td><td>47</td></tr>
+            
+            <tr><td>TLS</td><td>3</td></tr>
+            
+            <tr><td>MDNS</td><td>2</td></tr>
+            
+            <tr><td>DATA</td><td>2</td></tr>
+            
+            <tr><td>DHCP</td><td>1</td></tr>
+            
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Top Talkers (IPs)</h3>
+        <table>
+          <thead><tr><th>IP</th><th>Pkts</th></tr></thead>
+          <tbody>
+            
+            <tr><td class="mono">127.0.0.1</td><td>80</td></tr>
+            
+            <tr><td class="mono">192.168.5.20</td><td>7</td></tr>
+            
+            <tr><td class="mono">3.167.183.99</td><td>7</td></tr>
+            
+            <tr><td class="mono">2604:2d80:9f02:e900:8bbe:37fc:b521:f663</td><td>5</td></tr>
+            
+            <tr><td class="mono">2606:4700:4400::ac40:94eb</td><td>3</td></tr>
+            
+            <tr><td class="mono">2603:1036:304:83d::2</td><td>2</td></tr>
+            
+            <tr><td class="mono">192.168.5.45</td><td>1</td></tr>
+            
+            <tr><td class="mono">224.0.0.251</td><td>1</td></tr>
+            
+            <tr><td class="mono">fe80::c51:2e05:5639:2fee</td><td>1</td></tr>
+            
+            <tr><td class="mono">ff02::fb</td><td>1</td></tr>
+            
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Top Ports</h3>
+        <table>
+          <thead><tr><th>Port</th><th>Pkts</th></tr></thead>
+          <tbody>
+            
+            <tr><td class="mono">5037</td><td>40</td></tr>
+            
+            <tr><td class="mono">443</td><td>12</td></tr>
+            
+            <tr><td class="mono">60678</td><td>7</td></tr>
+            
+            <tr><td class="mono">5353</td><td>4</td></tr>
+            
+            <tr><td class="mono">49994</td><td>3</td></tr>
+            
+            <tr><td class="mono">58718</td><td>2</td></tr>
+            
+            <tr><td class="mono">58726</td><td>2</td></tr>
+            
+            <tr><td class="mono">58736</td><td>2</td></tr>
+            
+            <tr><td class="mono">58742</td><td>2</td></tr>
+            
+            <tr><td class="mono">58744</td><td>2</td></tr>
+            
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>TCP Flags</h3>
+        <table>
+          <thead><tr><th>Flag</th><th>Count</th></tr></thead>
+          <tbody>
+            
+            <tr><td>ACK</td><td>30</td></tr>
+            
+            <tr><td>SYN</td><td>20</td></tr>
+            
+            <tr><td>RST</td><td>20</td></tr>
+            
+            <tr><td>PSH</td><td>3</td></tr>
+            
+            <tr><td>FIN</td><td>2</td></tr>
+            
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>AI Summary</h3>
+        
+          
+            <ul class="list">
+              
+              <li>AI request failed (rate limited or temporarily unavailable). Details: {
+    "error": {
+        "message": "Incorrect API key provided: sk-NEW-K***HERE. You can find your API key at https://platform.openai.com/account/api-keys.",
+        "type": "invalid_request_error",
+</li>
+              
+            </ul>
+          
+          
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      Generated by <span class="mono">ai-traffic-analyzer-mini</span>
+    </div>
+  </div>
+</body>
+</html>
